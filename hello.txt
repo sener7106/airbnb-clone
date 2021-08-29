@@ -1,1 +1,54 @@
-dsadassa
+#migration 데이터의 유형을 이동하는 것
+
+#데이터베이스와 장고의 동기화 -> django_migrations
+.. python manage.py makemigrations
+
+코드를 어떻게 정리할 것인가
+
+Projct >> app의 집합, 폴더의 집합, 함수의 집합
+
+애플리케이션은 function의 집합..
+
+airbnbv에서는 어떤 앱을 만들어야 할까?
+
+room 폴더 내에 넣어야 할 기능들!! class room -> function()
+
+divide and conquer (분해 및 지배)
+
+room -> 검색하기, 수정하기 ,숙소보기
+list -> 
+
+reservation -> 생성, 수정 ,삭제, 점수보기
+
+Weblog Application. 블로그 앱 안에 유저 앱이 있을 필요는 없다..
+config 폴더에서 모든 애플리케이션(기능)을 통합해서 합칠 수 있다.
+
+"한 문장으로 애플리케이션을 표현할 수 있어야함"
+
+AND 단어가 들어가면 안됨!
+
+항상 작게 만들기
+
+-----------------------
+
+python manage.py createsuperuser
+
+lists, conversations, reservations, reviews, rooms, auth_user_groups
+// 모든 유저들을 위한 admin 관리창을 만들기 위해서 새로이 생성해준것.
+
+우리는 framework를 사용하고 있기 때문에, 파일이름을 변경해주어선 안됨.
+django rule에 따라서 변경해야함.
+
+react는 라이브러리 개념이기 때문에 변환할 수 있음.
+
+파일을 생성할 수 있지만, 기존에 있던 파일을 지울 수 없음.
+
+----------------------------
+AUTH USER customizing django 
+substituting a custom User model
+
+settings.py를 조정
+migration
+
+model을 재설정
+----------------------------
