@@ -14,7 +14,21 @@ class RoomsAdmin(admin.ModelAdmin):
 
     """Rooms Admin Definition"""
 
-    pass
+    list_display = (
+        "name",
+        "country",
+        "city",
+        "price",
+        "guests",
+        "beds",
+        "bedrooms",
+        "baths",
+        "check_in",
+        "check_out",
+        "instant_book",
+    )
+
+    list_filter = ("instant_book", "city", "country")
 
 
 @admin.register(models.Photo)

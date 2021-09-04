@@ -5,7 +5,7 @@ from core import models as core_models
 # from users import models as user_models
 
 
-class AbstractItem(core_models.TimeStampModel):  # name을 위한 item
+class AbstractItem(core_models.TimeStampedModel):  # name을 위한 item
     """Abstract Item"""
 
     name = models.CharField(max_length=80)
@@ -51,7 +51,7 @@ class HouseRule(AbstractItem):
 # Create your models here.
 
 
-class Photo(core_models.TimeStampModel):
+class Photo(core_models.TimeStampedModel):
     """Photo Model Definition"""
 
     caption = models.CharField(max_length=80)
@@ -59,7 +59,7 @@ class Photo(core_models.TimeStampModel):
     room = models.ForeignKey("Room", on_delete=models.CASCADE)
 
 
-class Room(core_models.TimeStampModel):
+class Room(core_models.TimeStampedModel):
 
     """Room Model Definition"""
 
@@ -84,10 +84,8 @@ class Room(core_models.TimeStampModel):
     facility = models.ManyToManyField("Facility", blank=True)
     house_rules = models.ManyToManyField("HouseRule", blank=True)
 
+    # 국가 사용 코드.. django-counries
+    # take a class = > string __str__
 
-# 국가 사용 코드.. django-counries
-# take a class = > string __str__
-
-
-def __str__(self):
-    return self.name
+    def __str__(self):
+        return self.name
