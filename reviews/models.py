@@ -14,10 +14,28 @@ class Review(core_models.TimeStampedModel):
     location = models.IntegerField(default=5)
     check_in = models.IntegerField(default=5)
     value = models.IntegerField(default=5)
-    user = models.ForeignKey("users.User", on_delete=models.CASCADE)
-    room = models.ForeignKey("rooms.Room", on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        "users.User", related_name="reviews", on_delete=models.CASCADE
+    )
+    room = models.ForeignKey(
+        "rooms.Room", related_name="reviews", on_delete=models.CASCADE
+    )
 
     def __str__(self):
-        return f"{self.review}' - {self.room.name}"
+        return f"{self.review} - {self.room.name}"
+
+    def rating_average(self):
+        avg = (
+            self.accuracy
+            + self.communication
+            + self.cleanliness
+            + self.location
+            + self.check_in
+            + self.value
+        ) / 6
+        return round(avg, 2)
+
+    rating_average.short_description = "Avg."
 
     # python 3 string 문법
+    # set은 foreign key의 대상이 element로 얻는 방법이다.
