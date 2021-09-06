@@ -5,11 +5,11 @@
 
 코드를 어떻게 정리할 것인가
 
-Projct >> app의 집합, 폴더의 집합, 함수의 집합
+Project >> app의 집합, 폴더의 집합, 함수의 집합
 
 애플리케이션은 function의 집합..
 
-airbnbv에서는 어떤 앱을 만들어야 할까?
+airbnb에서는 어떤 앱을 만들어야 할까?
 
 room 폴더 내에 넣어야 할 기능들!! class room -> function()
 
@@ -54,3 +54,27 @@ model을 재설정
 ----------------------------
 
 core -> 폴더 common으로 사용할 수 있는 집합
+
+fOREIGN KEY => 한 모델을 다른 모델과 연결하는 것을 말함..
+
+MANY TO ONE 
+
+photo link rooms link user
+------------------
+
+super()
+
+class Dog() :
+    def __init__(self):
+        print("woof woof)
+    
+    def pee(self):
+        print("I will pee")
+
+class Puppy(Dog):
+    def pee(self):
+        print("go to the park)
+        super().pee() # 부모 클래스의 메소드를 사용
+
+a = Puppy()
+a.pee()
