@@ -30,7 +30,17 @@ class RoomsAdmin(admin.ModelAdmin):
     fieldsets = (
         (
             "Basic Info",
-            {"fields": ("name", "description", "country", "city", "address", "price")},
+            {
+                "fields": (
+                    "name",
+                    "description",
+                    "country",
+                    "city",
+                    "address",
+                    "price",
+                    "room_type",
+                )
+            },
         ),
         ("Times", {"fields": ("check_in", "check_out", "instant_book")}),
         ("Spaces", {"fields": ("guests", "beds", "bedrooms", "baths")}),
@@ -38,7 +48,11 @@ class RoomsAdmin(admin.ModelAdmin):
             "More About the Space",
             {
                 "classes": ("collapse",),
-                "fields": ("amenities", "facilities", "house_rules"),
+                "fields": (
+                    "amenities",
+                    "facilities",
+                    "house_rules",
+                ),
             },
         ),
         ("Last Details", {"fields": ("host",)}),
@@ -55,6 +69,7 @@ class RoomsAdmin(admin.ModelAdmin):
         "baths",
         "check_in",
         "check_out",
+        "room_type",
         "instant_book",
         "count_amenities",
         "count_photos",

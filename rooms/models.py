@@ -18,9 +18,11 @@ class AbstractItem(core_models.TimeStampedModel):  # name을 위한 item
 
 
 class RoomType(AbstractItem):  # House rules, ammenity.. 부가 옵션
+
+    """RoomType Object Definition"""
+
     class Meta:
         verbose_name = "Room Type"
-        ordering = ["created"]
 
 
 class Amenity(AbstractItem):
@@ -84,7 +86,10 @@ class Room(core_models.TimeStampedModel):
     )  # owner, ForeignKey
     # 폭포수 효과.. 하나가 지워지면 모든 정보가 사라짐
     room_type = models.ForeignKey(
-        "RoomType", related_name="rooms", on_delete=models.SET_NULL, null=True
+        "RoomType",
+        related_name="rooms",
+        on_delete=models.SET_NULL,
+        null=True,
     )
     # 다른 모델과 연결시켜주는 역할... 관계형 데이터베이스, manyrooms one user
     amenities = models.ManyToManyField("Amenity", related_name="rooms", blank=True)
@@ -96,6 +101,7 @@ class Room(core_models.TimeStampedModel):
 
     def save(self, *args, **kwargs):
         self.city = str.capitalize(self.city)
+
         super().save(*args, **kwargs)  # Call the read Method
 
     def __str__(self):
@@ -104,9 +110,8 @@ class Room(core_models.TimeStampedModel):
     def total_rating(self):
         all_reviews = self.reviews.all()
         all_ratings = 0
-        for review in all_reviews:
-            all_ratings += review.rating_average()
         if len(all_reviews) > 0:
+            for review in all_reviews:
+                all_ratings += review.rating_average()
             return all_ratings / len(all_reviews)
-        else:
-            return 0
+        return 0
