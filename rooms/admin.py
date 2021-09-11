@@ -69,17 +69,16 @@ class RoomsAdmin(admin.ModelAdmin):
         "baths",
         "check_in",
         "check_out",
-        "room_type",
         "instant_book",
         "count_amenities",
         "count_photos",
         "total_rating",
+        "room_type",
     )
     ordering = ("name", "price", "bedrooms")
 
     list_filter = (
         "instant_book",
-        "room_type",
         "amenities",
         "facilities",
         "house_rules",
@@ -98,6 +97,8 @@ class RoomsAdmin(admin.ModelAdmin):
 
     def count_photos(self, obj):
         return obj.photos.count()
+
+    count_photos.short_description = "Photo Count"
 
 
 @admin.register(models.Photo)

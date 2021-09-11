@@ -14,7 +14,6 @@ class Command(BaseCommand):
         facilities = [
             "Private entrance",
             "Paid parking on premises",
-            "Paid parking off premises",
             "Elevator",
             "Parking",
             "Gym",

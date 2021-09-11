@@ -80,17 +80,19 @@ class Room(core_models.TimeStampedModel):
     guests = models.IntegerField()
     check_in = models.TimeField()
     check_out = models.TimeField()
-    instant_book = models.BooleanField(default="false")
+    instant_book = models.BooleanField(default=False)
     host = models.ForeignKey(
         "users.User", related_name="rooms", on_delete=models.CASCADE
     )  # owner, ForeignKey
     # 폭포수 효과.. 하나가 지워지면 모든 정보가 사라짐
+
     room_type = models.ForeignKey(
         "RoomType",
         related_name="rooms",
         on_delete=models.SET_NULL,
         null=True,
     )
+
     # 다른 모델과 연결시켜주는 역할... 관계형 데이터베이스, manyrooms one user
     amenities = models.ManyToManyField("Amenity", related_name="rooms", blank=True)
     facilities = models.ManyToManyField("Facility", related_name="rooms", blank=True)
@@ -113,5 +115,5 @@ class Room(core_models.TimeStampedModel):
         if len(all_reviews) > 0:
             for review in all_reviews:
                 all_ratings += review.rating_average()
-            return all_ratings / len(all_reviews)
+            return all_ratings / len(all_reviews, 2)
         return 0
