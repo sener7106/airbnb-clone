@@ -8,7 +8,7 @@ class Dog:
 
 class Puppy(Dog):
     def pee(self):
-        print("go to the park")
+        print("go to the park")  # override
         super().pee()
 
 
